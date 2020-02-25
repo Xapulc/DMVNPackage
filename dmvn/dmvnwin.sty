@@ -1,0 +1,140 @@
+% ===============================================================
+% Part of DMVN Style Package: CP1251 (Windows) version
+% ===============================================================
+\ProvidesPackage{dmvnwin}[2015/04/02 v1.00 DMVN CP1251 LaTeX Package]
+\RequirePackage{russlh}
+
+% ======================================
+% russcorr.sty
+% ======================================
+
+\DeclareSymbolFont{AMSa}{U}{msa}{m}{n} \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+\DeclareMathSymbol{\varkappa}{\mathord}{AMSb}{"7B}
+\DeclareMathSymbol{\leqslant}{\mathrel}{AMSa}{"36}
+\DeclareMathSymbol{\geqslant}{\mathrel}{AMSa}{"3E}
+
+\def\contentsname{Оглавление}
+\def\figurename{Рис.}
+\def\partname{Часть}
+\def\listfigurename{Список рисунков}
+\def\listtablename{Список таблиц}
+\def\refname{Литература}
+\def\bibname{Литература}
+\def\indexname{Предметный указатель}
+\def\tablename{Таблица}
+\def\abstractname{Аннотация}
+\@ifundefined{chapter}{}{\def\chaptername{Глава}}
+\def\proofname{Доказательство}
+
+% ======================================
+% DMVN
+% ======================================
+
+% ===============================================================
+% Document Title
+% ===============================================================
+\newcommand{\dmvntitle}[5]
+{
+\thispagestyle{empty}\vbox to \textheight{%
+\vskip40pt
+\centerline{\Large МОСКОВСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ}
+\medskip
+\centerline{\Large имени М.\,В.\,ЛОМОНОСОВА}
+\medskip
+\centerline{\Large Механико математический факультет}
+\par\vskip30pt
+\centerline{\epsfbox{mmlogo.2}}
+\vskip30pt
+\centerline{\Huge\textbf{\textsf{#1}}}
+\medskip
+\centerline{\Huge\textbf{\textsf{#2}}}
+\bigskip
+\centerline{\large\textsf{#3}}
+\vskip50pt
+\centerline{\Large#4}
+\vfill
+\centerline{\large#5}}
+}
+
+\newcommand{\dmvntrail}{%
+\par{\footnotesize\rightline{Последняя компиляция: \texttt{\today~г}.}%
+\rightline{Обновления документа на сайтах \dmvnwebsite,}%
+\rightline{\dmvnwebsitemirror.\texttt{~}}%
+\rightline{\LaTeX\  исходники}
+\rightline{\texttt{https://bitbucket.org/dmvn/mexmat.lectures}}
+\rightline{Об опечатках и неточностях пишите на \dmvnmail.}\par}}
+
+% ===============================================================
+% Here we define all needed <<theorems>>
+% ===============================================================
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{stm}[theorem]{Утверждение}
+\newtheorem{prop}[theorem]{Предложение}
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{hypotetic}[theorem]{Гипотеза}
+\newtheorem{problem}{Задача}[section]
+\newtheorem{tproblem}{Задача}
+\newtheorem{imp}{Следствие}[section]
+
+\newcounter{defcounter}
+\@addtoreset{defcounter}{section}
+\newenvironment{df*}{\stepcounter{defcounter}\par\vskip\theoremskip\textbf{Определение \arabic{defcounter}.}}{\par\vskip\theoremskip}
+
+\newcounter{ex}[subsection]
+\newenvironment{ex}{\stepcounter{ex}\par\vskip\theoremskip\textbf{Пример \theex.}}{\par\vskip\theoremskip}
+\newenvironment{df}{\par\vskip\theoremskip\textbf{Определение.}}{\par\vskip\theoremskip}
+\newenvironment{dfn}[1]{\par\vskip\theoremskip\textbf{Определение~({#1}).}}{\par\vskip\theoremskip}
+\newenvironment{note}{\par\vskip\theoremskip\textbf{Замечание.}}{\par\vskip\theoremskip}
+\newenvironment{denote}{\par\vskip\theoremskip\textbf{Обозначение.}}{\par\vskip\theoremskip}
+\newenvironment{denotes}{\par\vskip\theoremskip\textbf{Обозначения.}}{\par\vskip\theoremskip}
+\newenvironment{hint}{\par\vskip\theoremskip\textbf{Указание.}}{\par\vskip\theoremskip}
+\newenvironment{solution}{\par\vskip\theoremskip\textbf{Решение.}}{$\blacksquare$ \par\vskip\theoremskip}
+\newenvironment{proof}{\par $\square\quad$}{\hfill $\blacksquare$ \par\vskip\theoremskip}
+\newenvironment{answer}{\textbf{Ответ:}}{\par\vskip\theoremskip}
+
+%===========================
+% Fix counters and lists
+%===========================
+
+\def\ralph#1{\@ralph{\@nameuse {c@#1}}}
+
+\def\@ralph#1{\ifcase #1\or а\or б\or в\or г\or д\or е\or ж\or з\or
+и\else\@iralph{#1}\fi
+}
+
+\def\@iralph#1{\ifcase #1\or\or\or\or\or\or\or\or\or\or
+     к\or л\or м\or н\or о\or п\or р\or с\or т\or у\or
+     ф\or х\or ц\or ч\or ш\or щ\or э\or ю\or я\else\@ctrerr
+     \fi}
+
+\def\Ralph#1{\@Ralph{\@nameuse {c@#1}}}
+
+\def\@Ralph#1{\ifcase #1%
+     \or А\or Б\or В\or Г\or Д\or Е\or Ж\or З\or
+     И\else\@iRalph{#1}\fi}
+
+\def\@iRalph#1{\ifcase #1%
+     \or\or\or\or\or\or\or\or\or\or К\or Л\or М\or
+     Н\or О\or П\or Р\or С\or Т\or У\or Ф\or Х\or Ц\or
+     Ч\or Ш\or Щ\or Э\or Ю\or Я\else\@ctrerr
+     \fi}
+
+% Теперь "русифицируем" окружение enumerate:
+\def\labelenumi{\theenumi.}
+\def\theenumii{\ralph{enumii}}
+\def\labelenumii{\theenumii.}
+\def\p@enumii{\theenumi}
+\def\labelenumiii{{\bf--}}
+\let\theenumiii\relax
+\def\p@enumiii{\theenumi\theenumii}
+
+%===========================
+% here is windows-1251 encoding
+%===========================
+
+% right hyphen rules
+
+\hyphenation{ес-ли}
+\hyphenation{СССР МЦНМО РФФИ ГИБДД}
+
+\endinput

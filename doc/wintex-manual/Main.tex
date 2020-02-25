@@ -1,0 +1,26 @@
+\documentclass[unicode,10pt]{article}
+\usepackage[utf]{dmvn}
+\usepackage{polyglossia}
+\usepackage{unicode-math}
+\usepackage{fontspec}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+\setmathfont{Latin Modern Math}
+\begin{document}
+\addfontfeatures{Mapping=tex-text}
+\tableofcontents
+\include{intro}
+\include{compile}
+\include{pack}
+\include{edit}
+\include{unicode}
+\include{viewer}
+\include{hello}
+\include{style-guide}
+\include{end}
+\end{document}
